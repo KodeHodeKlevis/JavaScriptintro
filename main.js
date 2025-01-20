@@ -14,9 +14,12 @@ Read the terminal output before and after to see the difference
 
 ******************************************************************************/
 
+import { expect } from "vitest";
+
 export function start() {
   //your code here
   // return true
+  return (true)
 };
 
 /******************************************************************************
@@ -48,8 +51,8 @@ Example: "This is cool" should return "THIS IS COOL!"
 ******************************************************************************/
 
 export function makeMeLoud() {
-  //your code here
-}
+  expect(makeMeLoud("I'm feeling good")).toBe("I'M FEELING GOOD!")
+};
 
 /******************************************************************************
 3.
@@ -72,8 +75,20 @@ The function should return:
 
 ******************************************************************************/
 
-export const greeter = () => {
-  //your code here
+export const greeter = (name, hour) => {
+  if (hour < 0 || hour > 23) {
+    return "Invalid time";
+  }
+  
+  if (hour >= 0 && hour <= 5) {
+    return `Good night ${name}`;
+  } else if (hour >= 6 && hour <= 11) {
+    return `Good morning ${name}`;
+  } else if (hour >= 12 && hour <= 17) {
+    return `Good day ${name}`;
+  } else if (hour >= 18 && hour <= 23) {
+    return `Good evening ${name}` ;
+  }
 };
 
 /******************************************************************************
