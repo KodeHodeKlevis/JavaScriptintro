@@ -17,8 +17,7 @@ Read the terminal output before and after to see the difference
 import { expect } from "vitest";
 
 export function start() {
-  //your code here
-  // return true
+
   return (true)
 };
 
@@ -34,9 +33,10 @@ received is an even number.
 HINT: Use the modulo operator (%) Google it! 😊
 ******************************************************************************/
 
-export const oddOrEven = () => {
-  //your code here
+export const oddOrEven = (num) => {
+  return num % 2 === 0 ? "Even" : "Odd";
 };
+
 
 /******************************************************************************
 2.
@@ -50,9 +50,10 @@ Example: "This is cool" should return "THIS IS COOL!"
 
 ******************************************************************************/
 
-export function makeMeLoud() {
-  expect(makeMeLoud("I'm feeling good")).toBe("I'M FEELING GOOD!")
-};
+export function makeMeLoud(str) {
+  return str.toUpperCase() + "!";
+}
+
 
 /******************************************************************************
 3.
@@ -105,9 +106,10 @@ Example 2: ["One", "Two", "Three", "Four", "Five", "Six"] should return
 ["Two", "Three", "Four", "Five"]
 ******************************************************************************/
 
-export function arrayTrimmer() {
-  //your code here
+export function arrayTrimmer(arr) {
+  return arr.slice(1, arr.length - 1);
 }
+
 
 /******************************************************************************
 5.
@@ -128,8 +130,13 @@ Example3: "   hard        " should return "fun"
 
 ******************************************************************************/
 
-export const cleanAndFun = () => {
-  //your code here
+export const cleanAndFun = (text) => {
+  
+  const trimmedText = text.trim();
+  
+  const updatedText = trimmedText.replace(/hard/g, 'fun');
+  
+  return updatedText;
 };
 
 /******************************************************************************
@@ -152,10 +159,17 @@ Use array methods to do the following:
  Return the resulting array.
 ******************************************************************************/
 
-export function marvelEditor() {
-  //your code here
-}
+export function marvelEditor(arr) {
+ 
+  arr.shift();
+  arr = arr.map(hero => hero === "Doctor Strange" ? "Skrull" : hero);
 
+ const thorIndex = arr.indexOf("Thor");
+ const hulkIndex = arr.indexOf("Hulk");
+ arr.splice(thorIndex, 2, "Captain America");
+
+ return arr.join("💪")
+};
 /******************************************************************************
 7.
 
@@ -183,9 +197,23 @@ Return "😎Primitive values only😎"
 
 ******************************************************************************/
 
-export function coolMaker() {
-  //your code here
+export function coolMaker(input) {
+  if (typeof input === 'string') {
+    return `😎${input}😎`;
+  }
+  
+  if (typeof input === 'number') {
+    return `😎${(input * 2).toString()}😎`;
+  }
+  
+  if (typeof input === 'boolean') {
+    return input ? "😎Yeah😎" : "😎Chill😎";
+  }
+  
+  return "😎Primitive values only😎";
 }
+
+
 
 /******************************************************************************
 8.
@@ -210,6 +238,14 @@ Example3: (["One", "Two", "Three"], "Four") --> ["One", "Two", "Three", "Four"]
 Example4: (["One", "Two", "Three"], "Two") --> ["One", "Three"]
 ******************************************************************************/
 
-export const addOrRemove = () => {
+export const addOrRemove = (array, string) => {
   //your code here
-};
+    const index = array.indexOf(string);
+    if (index !== -1) {
+      array.splice(index, 1);
+    } else {
+      array.push(string);
+    }
+    return array;
+  };
+
